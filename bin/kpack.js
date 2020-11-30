@@ -10,6 +10,6 @@ let Compiler = require("../lib/Compiler.js");
 let config = require(path.resolve("webpack.config.js"));
 
 let compiler = new Compiler(config);
-compiler.hooks.entryOption.call();
+// compiler.hooks.entryOption.call();
 // 标识运行编译
 compiler.run();

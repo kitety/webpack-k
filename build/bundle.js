@@ -39,13 +39,20 @@ installedChunks[chunkId]();
 installedChunks[chunkId] = 0;
 }
 function startup() {
-return __webpack_require__("<%=entry%>");
+return __webpack_require__("./src/index.js");
 };
 return startup();
 })({
-<%for(moduleId in modules){%>
-"<%-moduleId%>": (function(module, exports, __webpack_require__) {
-<%-modules[moduleId]%>
+
+"./src/index.js": (function(module, exports, __webpack_require__) {
+let button = document.createElement('button');
+button.innerHTML = '点我';
+button.addEventListener('click', event => {
+  __webpack_require__.e("src_hello_js.js").then(__webpack_require__.t.bind(__webpack_require__, "./src/hello.js")).then(result => {
+    alert(result.default);
+  });
+});
+document.body.appendChild(button);
 }),
-<%}%>
+
 });
